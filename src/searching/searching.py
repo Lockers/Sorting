@@ -1,30 +1,31 @@
 # STRETCH: implement Linear Search				
-def linear_search(arr, target):
-  
-  # TO-DO: add missing code
-
-   return -1   # not found
-
-
-# STRETCH: write an iterative implementation of Binary Search 
-def binary_search(arr, target):
-
-  if len(arr) == 0:
-    return -1 # array empty
-    
-  low = 0
-  high = len(arr)-1
-
-  # TO-DO: add missing code
-
-  return -1 # not found
+def linear_search(data, thing):
+    for i in data:
+        if i == thing:
+            return i
+        else:
+            x = 'Thing not found'
+    return x
 
 
 # STRETCH: write a recursive implementation of Binary Search 
-def binary_search_recursive(arr, target, low, high):
-  
-  middle = (low+high)//2
+def binary_search_recursive(data, thing):
+    middle = (int(len(data) / 2))
+    if len(data) == 1:
+        if thing != data[middle]:
+            print(f'{thing} not found')
+            
+    if thing == data[middle]:
+        print(f'Found {thing}')
+        
 
-  if len(arr) == 0:
-    return -1 # array empty
-  # TO-DO: add missing if/else statements, recursive calls
+    if thing < data[middle]:
+        s = slice(int(middle))
+        data = data[s]
+        binary_search_recursive(data, thing)
+    elif thing > data[middle]:
+        s = slice(int(middle), int(len(data)))
+        data = data[s]
+        binary_search_recursive(data, thing)
+
+print(binary_search_recursive([2, 3, 4, 6, 8, 9], 4))
